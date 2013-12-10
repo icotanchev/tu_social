@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'haml'
+gem 'mechanize', '~> 2.7.1'
 
 group :development, :test do
   gem 'mysql2', '~> 0.3.13'
