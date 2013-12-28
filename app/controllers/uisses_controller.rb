@@ -9,6 +9,7 @@ class UissesController < ApplicationController
   def testov(first, last)
     puts first
     puts last
+
     $marks_array = []
     a = Mechanize.new
 
@@ -17,8 +18,6 @@ class UissesController < ApplicationController
       login_page.form_with(name: 'studlogin') do |form|
         form.field_with(id: 'egn').value = first
         form.field_with(id: 'fn').value = last
-        puts "LOG IN"
-        puts form
 
         login_page = a.submit(form, form.button_with(id: 'login'))
         
