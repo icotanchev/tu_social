@@ -23,12 +23,19 @@ class UissesController < ApplicationController
   end
 
   def testov(first, last)
+    puts first
+    puts last
+    $marks_array = []
     a = Mechanize.new
+
     a.get('http://student.tu-sofia.bg/') do |login_page|
-      
+      puts "IN"
       login_page.form_with(name: 'studlogin') do |form|
         form.field_with(id: 'egn').value = first
         form.field_with(id: 'fn').value = last
+        puts "LOG IN"
+        puts form
+
         login_page = a.submit(form, form.button_with(id: 'login'))
         
         marks = a.click(login_page.link_with(:text => /Оценки/))
@@ -47,11 +54,6 @@ class UissesController < ApplicationController
     egn = params[:uiss][:egn]
     fac_num = params[:uiss][:fac_num]
     
-    #marks_array = []
-    puts egn
-    puts fac_num
- #   test = "#{egn} #{fac_num}"
-#    Rake::Task['marks'].invoke(egn)
     testov(egn, fac_num)
 
     puts '=====FROM====='
