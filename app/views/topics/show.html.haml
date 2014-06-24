@@ -1,0 +1,11 @@
+%p#notice= notice
+%p
+  %strong Title:
+  = @topic.title
+%p
+  %strong Content:
+  = @topic.content
+%p
+  %strong User:
+  = topic_owner(@topic.user_id)
+= link_to 'Back', topics_path

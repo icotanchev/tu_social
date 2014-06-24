@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :topic
+
 	before_save :check_email
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
