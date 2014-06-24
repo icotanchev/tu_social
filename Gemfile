@@ -3,10 +3,13 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 gem 'bootstrap-sass', '~> 2.3.2.0'
-gem 'haml'
+gem 'haml', '~> 4.0.3'
 gem 'mechanize', '~> 2.7.1'
+gem 'pry'
+gem 'cancan', '~> 1.6.10'
 
 group :development, :test do
+
   gem 'mysql2', '~> 0.3.13'
   gem 'rspec-rails', '~> 2.13.1'
   gem 'quiet_assets', '~> 1.0.2'

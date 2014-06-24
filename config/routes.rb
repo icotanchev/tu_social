@@ -1,6 +1,4 @@
 TuSocial::Application.routes.draw do
-  resources :uisses
-
   root to: 'static_pages#home'
   
   get 'static_pages/help'
