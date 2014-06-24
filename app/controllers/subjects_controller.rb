@@ -1,5 +1,6 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   def index
     @subjects = Subject.all
@@ -17,7 +18,7 @@ class SubjectsController < ApplicationController
 
   def create
     @subject = Subject.new(subject_params)
-
+    
     @subject.user = current_user
     if @subject.save and current_user.professor?
       redirect_to @subject, notice: 'Subject was successfully created.' 
