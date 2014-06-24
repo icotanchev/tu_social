@@ -1,0 +1,27 @@
+%h1 Listing subjects
+%table
+  %thead
+    %tr
+      %th Title
+      %th Exam info
+      %th Subject info
+      %th Requirements
+      %th Teacher
+      -if current_user.professor?
+        %th
+        %th
+        %th
+  %tbody
+    - @subjects.each do |subject|
+      %tr
+        %td= subject.title
+        %td= subject.exam_info
+        %td= subject.subject_info
+        %td= subject.requirements
+        %td= subject_owner(subject.user_id)
+        -if current_user.professor?
+          %td= link_to 'Show', subject
+          %td= link_to 'Edit', edit_subject_path(subject)
+          %td= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Subject', new_subject_path if current_user.professor?

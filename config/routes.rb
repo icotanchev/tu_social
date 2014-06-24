@@ -1,4 +1,6 @@
 TuSocial::Application.routes.draw do
+  resources :subjects
+
   resources :topics
 
   root to: 'topics#index'

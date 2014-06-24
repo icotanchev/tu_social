@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :topic
+  has_many :subject
 
 	before_save :check_email
   # Include default devise modules. Others available are:

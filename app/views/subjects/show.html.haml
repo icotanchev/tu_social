@@ -1,0 +1,20 @@
+%p#notice= notice
+%p
+  %strong Title:
+  = @subject.title
+%p
+  %strong Exam info:
+  = @subject.exam_info
+%p
+  %strong Subject info:
+  = @subject.subject_info
+%p
+  %strong Requirements:
+  = @subject.requirements
+%p
+  %strong Teacher:
+  = subject_owner(@subject.user_id)
+-if current_user.professor?
+  = link_to 'Edit', edit_subject_path(@subject)
+
+= link_to 'Back', edit_subject_path(@subject)
