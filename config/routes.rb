@@ -1,7 +1,7 @@
 TuSocial::Application.routes.draw do
   resources :topics
 
-  root to: 'static_pages#home'
+  root to: 'topics#index'
   
   get 'static_pages/help'
   get 'static_pages/about'
@@ -9,7 +9,11 @@ TuSocial::Application.routes.draw do
 
   devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
 
-  resources :users
+  resources :users do
+    collection do
+      get 'teachers'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
