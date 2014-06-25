@@ -1,13 +1,5 @@
 TuSocial::Application.routes.draw do
-  resources :subjects
-
-  resources :topics
-
   root to: 'topics#index'
-  
-  get 'static_pages/help'
-  get 'static_pages/about'
-  get 'static_pages/contact'
 
   devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
 
@@ -15,6 +7,14 @@ TuSocial::Application.routes.draw do
     collection do
       get 'teachers'
     end
+  end
+
+  resources :subjects do
+    resources :comments
+  end
+  
+  resources :topics do
+    resources :comments
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

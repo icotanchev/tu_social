@@ -9,3 +9,7 @@
   %strong User:
   = topic_owner(@topic.user_id)
 = link_to 'Back', topics_path
+
+%h2 Comments
+= render 'comments/comments'
+= render 'comments/form'

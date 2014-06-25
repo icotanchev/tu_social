@@ -14,8 +14,8 @@
         %td= topic.title
         %td= topic.content
         %td= topic_owner(topic.user_id)
-        %td= link_to 'Show', topic
-        %td= link_to 'Edit', edit_topic_path(topic)
-        %td= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'View', topic
+        /%td= link_to 'Edit', edit_topic_path(topic)
+        /%td= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
 = link_to 'New Topic', new_topic_path

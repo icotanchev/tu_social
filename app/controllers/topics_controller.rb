@@ -7,6 +7,9 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+    @commentable = @topic
+    @comments = @commentable.comments
+    @comment = Comment.new
   end
 
   def new

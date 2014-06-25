@@ -19,8 +19,8 @@
         %td= subject.subject_info
         %td= subject.requirements
         %td= subject_owner(subject.user_id)
+        %td= link_to 'View', subject
         -if current_user.professor?
-          %td= link_to 'Show', subject
           %td= link_to 'Edit', edit_subject_path(subject)
           %td= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }
 %br/

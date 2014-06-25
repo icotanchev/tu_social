@@ -17,4 +17,8 @@
 -if current_user.professor?
   = link_to 'Edit', edit_subject_path(@subject)
 
+%h2 Comments
+= render 'comments/comments'
+= render 'comments/form'
+
 = link_to 'Back', edit_subject_path(@subject)

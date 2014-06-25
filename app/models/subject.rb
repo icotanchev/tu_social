@@ -1,5 +1,6 @@
 class Subject < ActiveRecord::Base
 	belongs_to :user
+	has_many :comments, as: :commentable
 
 	validates :user, presence: true
 	validates :title, presence: true, uniqueness: true
