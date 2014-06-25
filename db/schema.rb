@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625131015) do
+ActiveRecord::Schema.define(version: 20140625152132) do
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 20140625131015) do
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+
+  create_table "messages", force: true do |t|
+    t.integer  "recipient"
+    t.integer  "sender"
+    t.string   "subject"
+    t.text     "content"
+    t.boolean  "msg_read"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["recipient", "sender", "subject"], name: "index_messages_on_recipient_and_sender_and_subject", using: :btree
 
   create_table "subjects", force: true do |t|
     t.string   "title"

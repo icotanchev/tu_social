@@ -1,0 +1,17 @@
+%h1 Listing messages
+
+%table
+  %tr
+    %th Recipient
+    %th Subject
+    %th Content
+    %th
+    %th
+
+  - @messages.each do |message|
+    %tr
+      %td= full_name(User.find(message.recipient))
+      %td= message.subject
+      %td= message.content
+      %td= link_to 'Show', message
+      %td= link_to 'Destroy', message, :method => :delete, :data => { :confirm => 'Are you sure?' }

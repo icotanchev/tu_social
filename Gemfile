@@ -7,6 +7,7 @@ gem 'haml', '~> 4.0.3'
 gem 'mechanize', '~> 2.7.1'
 gem 'pry'
 gem 'cancan', '~> 1.6.10'
+gem 'resque', '~> 1.25.1'
 
 group :development, :test do
 
