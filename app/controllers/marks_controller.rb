@@ -1,6 +1,12 @@
 class MarksController < ApplicationController
   def index
-    @marks = Mark.where(user_id: current_user.id).first.marks
+  	mark = Mark.where(user_id: current_user.id).first
+  	
+  	if mark.nil?
+  		@marks = Mark.create!(user_id: current_user.id)
+  	else
+    	@marks = mark.marks
+    end
   end
 
   def new_mark
