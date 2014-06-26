@@ -1,3 +1,31 @@
+.container
+  .panel.panel-default
+    .panel-heading
+      %span.glyphicon.glyphicon-filter
+      Search Subjects
+    .panel-body
+      %form#user_searching
+        = search_form_for @search, url: root_url, nethod: :get do |f|
+          #Search.row
+            .col-md-12
+              .col-md-2
+                #field
+                  = f.label :email_cont, 'Email'
+                  = f.text_field :email_cont
+              .col-md-2
+                #field
+                  = f.label :first_name_cont, 'First Name'
+                  = f.text_field :first_name_cont
+              .col-md-2
+                #field
+                  = f.label :last_name_cont, 'Last Name'
+                  = f.text_field :last_name_cont
+          .row
+            .col-md-4
+            .col-md-5
+              #action
+                = f.submit 'Search'
+
 %h1 Users
 %table
   %thead
@@ -14,7 +42,3 @@
         %td= user.full_name
         %td= user.email
         %td= link_to 'Send Message', send_new_messages_path(user.id)
-        /%td= link_to 'Show Account', topic
-        /%td= link_to 'Edit', edit_topic_path(topic)
-        /%td= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }
-%br/

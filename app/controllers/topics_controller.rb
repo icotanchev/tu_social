@@ -2,7 +2,8 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: [:show]
 
   def index
-    @topics = Topic.all
+    @search = Topic.search(params[:q])
+    @topics = @search.result.includes(:user)
   end
 
   def show

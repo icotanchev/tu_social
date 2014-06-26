@@ -1,21 +1,67 @@
-%h1 Listing topics
-%table
-  %thead
-    %tr
-      %th Title
-      %th Content
-      %th User
-      %th
-      %th
-      %th
-  %tbody
-    - @topics.each do |topic|
-      %tr
-        %td= topic.title
-        %td= topic.content
-        %td= topic_owner(topic.user_id)
-        %td= link_to 'View', topic
-        /%td= link_to 'Edit', edit_topic_path(topic)
-        /%td= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Topic', new_topic_path
+.container
+  .panel.panel-default
+    .panel-heading
+      %span.glyphicon.glyphicon-filter
+      Search Topics
+    .panel-body
+      %form#topic_searching
+        = search_form_for @search, url: root_url, nethod: :get do |f|
+          #Search.row
+            .col-md-12
+              .col-md-2
+                #field
+                  = f.label :title_cont, 'Topic title'
+                  = f.text_field :title_cont
+              .col-md-2
+                #field
+                  = f.label :content_cont, 'Topic content'
+                  = f.text_field :content_cont
+              .col-md-2
+                #field
+                  = f.label :user_name, 'User first name'
+                  = f.select :user_id_eq, select_users_for(params[:q] ? params[:q][:user_id_eq] : '').html_safe, multiple: true, class: 'form-control', include_blank: 'Select user'
+              .col-md-2
+                %label{for: 'q_created_at_gteq'} Date From
+                .input-group.input-group-sm.input-append.date.datepicker
+                  = f.text_field(:created_at_gteq, 'data-behaviour' => 'datepicker', class: 'form-control input-sm', placeholder: 'DD/MM/YY', value: params[:q] ? "#{params[:q][:created_at_gteq]} 00:00:00" : '')
+                  %span.add-on
+                    %i.icon-th
+              .col-md-2
+                %label{for: 'q_created_at_lteq'} Date To
+                .input-group.input-group-sm.input-append.date.datepicker
+                  = f.text_field(:created_at_lteq, 'data-behaviour' => 'datepicker', class: 'form-control input-sm', placeholder: 'DD/MM/YY', value: params[:q] ? "#{params[:q][:created_at_lteq]} 23:59:59": '')
+                  %span.add-on
+                    %i.icon-th
+          .row
+            .col-md-4
+            .col-md-5
+              #action
+                = f.submit 'Search'
+
+  .panel.panel-default
+    .panel-body
+
+      %h1 Topics
+      %table
+        %thead
+          %tr
+            %th 
+              = sort_link @search, :title, 'Title'
+            %th 
+              = sort_link @search, :content, 'Content'
+            %th User name
+            %th 
+              = sort_link @search, :created_at, 'Created at'
+            %th
+            %th
+            %th
+        %tbody
+          - @topics.each do |topic|
+            %tr
+              %td= topic.title
+              %td= topic.content
+              %td= topic_owner(topic.user_id)
+              %td= topic.created_at
+              %td= link_to 'View', topic
+      %br/
+      = link_to 'New Topic', new_topic_path

@@ -1,27 +1,85 @@
-%h1 Listing subjects
-%table
-  %thead
-    %tr
-      %th Title
-      %th Exam info
-      %th Subject info
-      %th Requirements
-      %th Teacher
-      -if current_user.professor?
-        %th
-        %th
-        %th
-  %tbody
-    - @subjects.each do |subject|
-      %tr
-        %td= subject.title
-        %td= subject.exam_info
-        %td= subject.subject_info
-        %td= subject.requirements
-        %td= subject_owner(subject.user_id)
-        %td= link_to 'View', subject
-        -if current_user.professor?
-          %td= link_to 'Edit', edit_subject_path(subject)
-          %td= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Subject', new_subject_path if current_user.professor?
+.container
+  .panel.panel-default
+    .panel-heading
+      %span.glyphicon.glyphicon-filter
+      Search Subjects
+    .panel-body
+      %form#subject_searching
+        = search_form_for @search, url: root_url, nethod: :get do |f|
+          #Search.row
+            .col-md-12
+              .col-md-2
+                #field
+                  = f.label :title_cont, 'Topic title'
+                  = f.text_field :title_cont
+              .col-md-2
+                #field
+                  = f.label :exam_info_cont, 'Examp information'
+                  = f.text_field :exam_info_cont
+              .col-md-2
+                #field
+                  = f.label :subject_info_cont, 'Subject information'
+                  = f.text_field :subject_info_cont
+              .col-md-2
+                #field
+                  = f.label :requirements_cont, 'Requirements'
+                  = f.text_field :requirements_cont
+              .col-md-2
+                #field
+                  = f.label :user_name, 'User first name'
+                  = f.select :user_id_eq, select_users_for(params[:q] ? params[:q][:user_id_eq] : '').html_safe, multiple: true, class: 'form-control', include_blank: 'Select user'
+              .col-md-2
+                %label{for: 'q_created_at_gteq'} Date From
+                .input-group.input-group-sm.input-append.date.datepicker
+                  = f.text_field(:created_at_gteq, 'data-behaviour' => 'datepicker', class: 'form-control input-sm', placeholder: 'DD/MM/YY', value: params[:q] ? "#{params[:q][:created_at_gteq]} 00:00:00" : '')
+                  %span.add-on
+                    %i.icon-th
+              .col-md-2
+                %label{for: 'q_created_at_lteq'} Date To
+                .input-group.input-group-sm.input-append.date.datepicker
+                  = f.text_field(:created_at_lteq, 'data-behaviour' => 'datepicker', class: 'form-control input-sm', placeholder: 'DD/MM/YY', value: params[:q] ? "#{params[:q][:created_at_lteq]} 23:59:59": '')
+                  %span.add-on
+                    %i.icon-th
+          .row
+            .col-md-4
+            .col-md-5
+              #action
+                = f.submit 'Search'
+
+  .panel.panel-default
+    .panel-body
+
+      %h1 Listing subjects
+      %table
+        %thead
+          %tr
+            %th 
+              = sort_link @search, :title, 'Title'
+            %th
+              = sort_link @search, :exam_info, 'Exam info'
+            %th
+              = sort_link @search, :subject_info, 'Subject info'
+            %th
+              = sort_link @search, :requirements, 'Requirements'
+            %th Teacher name
+            %th
+              = sort_link @search, :created_at, 'Created at'
+            -if current_user.professor?
+              %th
+              %th
+              %th
+        %tbody
+          - @subjects.each do |subject|
+            %tr
+              %td= subject.title
+              %td= subject.exam_info
+              %td= subject.subject_info
+              %td= subject.requirements
+              %td= subject_owner(subject.user_id)
+              %td= subject.created_at
+              %td= link_to 'View', subject
+              -if current_user.professor?
+                %td= link_to 'Edit', edit_subject_path(subject)
+                %td= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }
+      %br/
+      = link_to 'New Subject', new_subject_path if current_user.professor?

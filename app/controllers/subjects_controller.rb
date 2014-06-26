@@ -3,7 +3,8 @@ class SubjectsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @subjects = Subject.all
+    @search = Subject.search(params[:q])
+    @subjects = @search.result.includes(:user)
   end
 
   def show

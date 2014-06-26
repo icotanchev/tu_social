@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
 
 	def index
-		@users = User.all
+		@search = User.where(role: 'student').search(params[:q])
+    @users = @search.result
 	end
 
 	def teachers
-		@users = User.where(role: 'professor')
+		@search = User.where(role: 'professor').search(params[:q])
+		@users = @search.result
 		render :index
 	end
 
