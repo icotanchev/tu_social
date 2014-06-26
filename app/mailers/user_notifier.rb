@@ -12,4 +12,15 @@ class UserNotifier < ActionMailer::Base
       subject: 'tu-social you have new message'
     ).deliver
 	end
+
+	def new_mark(user)
+		@user = user
+
+		mail(
+			from: 'icotnachev91@gmail.com', 
+			reply_to: 'icotnachev91@gmail.com',
+      to: user.email,
+      subject: 'tu-social you have new message'
+    ).deliver
+	end
 end

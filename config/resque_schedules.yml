@@ -6,3 +6,7 @@ send_emails:
   cron: '0 0 1 * *'
   class: SendMsgToUsers
   description: 'Sends unreaded messages'
+new_mark:
+  cron: '0 0 1 * *'
+  class: NotifiForNewMark
+  description: 'Update marks'
