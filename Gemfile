@@ -8,6 +8,7 @@ gem 'mechanize', '~> 2.7.1'
 gem 'pry'
 gem 'cancan', '~> 1.6.10'
 gem 'resque', '~> 1.25.1'
+gem 'resque-scheduler', '~> 2.4.0'
 
 group :development, :test do
 

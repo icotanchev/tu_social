@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625152132) do
+ActiveRecord::Schema.define(version: 20140625230827) do
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20140625152132) do
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+
+  create_table "marks", force: true do |t|
+    t.text     "marks"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "messages", force: true do |t|
     t.integer  "recipient"
@@ -72,12 +79,14 @@ ActiveRecord::Schema.define(version: 20140625152132) do
     t.string   "pin"
     t.string   "faculty_number"
     t.boolean  "send_emails"
+    t.boolean  "new_mark"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["faculty_number"], name: "index_users_on_faculty_number", using: :btree
   add_index "users", ["first_name"], name: "index_users_on_first_name", using: :btree
   add_index "users", ["last_name"], name: "index_users_on_last_name", using: :btree
+  add_index "users", ["new_mark"], name: "index_users_on_new_mark", using: :btree
   add_index "users", ["pin"], name: "index_users_on_pin", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role"], name: "index_users_on_role", using: :btree

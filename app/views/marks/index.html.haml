@@ -1,0 +1,27 @@
+- if @marks.nil?
+  %h2 
+    = "Your marks are not configured"
+- else
+  %h1 
+    = "Marks of #{current_user.first_name} #{current_user.last_name}"
+  %table
+    %thead
+      %tr
+        %th Number
+        %th Subjects
+        %th Form of exam
+        %th Marks
+    %tbody
+      - @marks.each do |key, value|
+        - next if key == 1
+        
+        -if value.length == 1
+          %tr
+            %td{colspan: 4}= value.first
+
+        -if value.length == 4
+          %tr
+            -value.each do |t|
+              %td= t
+%br            
+= link_to 'Check marks', new_mark_marks_path

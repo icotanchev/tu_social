@@ -11,6 +11,14 @@ TuSocial::Application.routes.draw do
     end
   end
 
+  resources :marks, only: [:index] do
+    collection do
+      get 'new_mark'
+    end
+  end
+
+
+
   resources :users do
     collection do
       get 'teachers'

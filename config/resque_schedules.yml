@@ -1,0 +1,4 @@
+import_marks:
+  cron: '* * * 10 *'
+  class: ImportMarksJob
+  description: 'Daily job for importing students marks'
