@@ -24,9 +24,13 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     
-    @message.sender, @message.recipient, @message.msg_read = current_user.id, params[:recipient], false
+    @message.sender = current_user.id 
+    @message.recipient = params[:recipient] 
+    @message.msg_read = false
     if @message.save
+      recipient = User.find(params[:recipient])
       redirect_to @message, notice: 'Message was successfully send!'
+      send_email(recipient) if recipient.send_emails
     else
       render action: 'new'
     end
@@ -41,6 +45,11 @@ class MessagesController < ApplicationController
   end
 
   private
+    #sending emails
+    def send_email(user)
+      UserNotifier.new_message(user)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_message
       @message = Message.find(params[:id])

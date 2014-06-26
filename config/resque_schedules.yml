@@ -1,4 +1,8 @@
 import_marks:
-  cron: '* * * 10 *'
+  cron: '0 0 1 * *'
   class: ImportMarksJob
-  description: 'Daily job for importing students marks'
+  description: 'Importing students marks'
+send_emails:
+  cron: '0 0 1 * *'
+  class: SendMsgToUsers
+  description: 'Sends unreaded messages'

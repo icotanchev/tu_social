@@ -1,0 +1,9 @@
+Dear #{@user.full_name.html_safe},
+
+You have new message from #{@sender.full_name.html_safe}.
+
+Message subject:
+#{@message.subject}
+
+Message content:
+#{@message.content}
