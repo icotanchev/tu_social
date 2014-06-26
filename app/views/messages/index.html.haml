@@ -10,7 +10,7 @@
 
   - @messages.each do |message|
     %tr
-      %td= full_name(User.find(message.recipient))
+      %td= User.find(message.recipient).full_name
       %td= message.subject
       %td= message.content
       %td= link_to 'Show', message

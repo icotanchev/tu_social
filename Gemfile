@@ -2,7 +2,11 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
-gem 'bootstrap-sass', '~> 2.3.2.0'
+# gem 'bootstrap-sass', '~> 2.3.2.0'
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+
 gem 'haml', '~> 4.0.3'
 gem 'mechanize', '~> 2.7.1'
 gem 'pry'
@@ -25,7 +29,7 @@ end
 
 gem 'devise', '~> 3.0.0'
 
-gem 'sass-rails', '~> 4.0.1'
+# gem 'sass-rails', '~> 4.0.1'
 gem 'uglifier', '~> 2.1.1'
 gem 'coffee-rails', '~> 4.0.1'
 gem 'jquery-rails', '~> 3.0.4'
