@@ -2,17 +2,15 @@ class User < ActiveRecord::Base
   has_many :topic
   has_many :subject
   has_many :message
-  
   has_one :mark
 
 	before_save :check_email
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # attr_accessible :email, :first_name, :last_name, :password, :password_confirmation#, :role, :pin, :faculty_number, :send_emails
+  validates :pin, length: { is: 10 }, numericality: { only_integer: true }
+  validates :faculty_number, length: { is: 9 }, numericality: { only_integer: true }
 
   def full_name
     [first_name, last_name].join(' ')
