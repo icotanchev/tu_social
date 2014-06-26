@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_topic, only: [:show]
 
   def index
     @topics = Topic.all
@@ -16,9 +16,6 @@ class TopicsController < ApplicationController
     @topic = Topic.new
   end
 
-  def edit
-  end
-
   def create
     @topic = Topic.new(topic_params)
 
@@ -27,22 +24,6 @@ class TopicsController < ApplicationController
       redirect_to @topic, notice: 'Topic was successfully created.'
     else
       render action: 'new', warning: 'Topic was not created!'
-    end
-  end
-
-  def update
-    if @topic.update(topic_params)
-      redirect_to @topic, notice: 'Topic was successfully updated.' 
-    else
-      render action: 'edit', warning: 'Topic was not updated!' 
-    end
-  end
-
-  def destroy
-    @topic.destroy
-    respond_to do |format|
-      format.html { redirect_to topics_url }
-      format.json { head :no_content }
     end
   end
 

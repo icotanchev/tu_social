@@ -14,10 +14,8 @@ module UissMarks
 		private
 
 		def update_marks(marks)
-			transaction do
-				Mark.where(user_id: user.id).first.update_attribute(:marks, marks)
-				user.update_attribute(:new_mark, true)
-			end
+			Mark.where(user_id: user.id).first.update_attribute(:marks, marks)
+			user.update_attribute(:new_mark, true)
 		end
 
 		def user
