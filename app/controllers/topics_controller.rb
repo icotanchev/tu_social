@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
 
   def index
     @search = Topic.search(params[:q])
-    @topics = @search.result.includes(:user)
+    @topics = @search.result.includes(:user).page(params[:page])
   end
 
   def show

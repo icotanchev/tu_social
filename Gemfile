@@ -7,6 +7,7 @@ gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 
+gem 'kaminari', '~> 0.16.1'
 gem 'haml', '~> 4.0.3'
 gem 'mechanize', '~> 2.7.1'
 gem 'pry'

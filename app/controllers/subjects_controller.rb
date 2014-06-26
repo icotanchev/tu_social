@@ -4,7 +4,7 @@ class SubjectsController < ApplicationController
 
   def index
     @search = Subject.search(params[:q])
-    @subjects = @search.result.includes(:user)
+    @subjects = @search.result.includes(:user).page(params[:page])
   end
 
   def show

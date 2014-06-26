@@ -5,12 +5,12 @@ class MessagesController < ApplicationController
   end
 
   def sent
-    @messages = Message.where(sender: current_user.id)
+    @messages = Message.where(sender: current_user.id).page(params[:page])
     render :index
   end
 
   def received
-    @messages = Message.where(recipient: current_user.id)
+    @messages = Message.where(recipient: current_user.id).page(params[:page])
     render :index
   end
 
