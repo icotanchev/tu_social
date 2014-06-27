@@ -14,6 +14,21 @@ TuSocial::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  #email
+  ActionMailer::Base.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "gmail.com",
+    user_name: "icotanchev91@gmail.com", 
+    password: "91tan4ev91",
+    authentication: "plain",
+    enable_starttls_auto: true
+  }
+
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
