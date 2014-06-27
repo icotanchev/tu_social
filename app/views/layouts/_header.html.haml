@@ -37,11 +37,11 @@
               
               -if unreaded_msg != 0
                 %li.label.label-important
-                  %a{href: messages_path} Received messages
+                  %a{href: received_messages_path} Received messages
                   = unreaded_msg
               - else
                 %li
-                  %a{href: messages_path} Received messages
+                  %a{href: received_messages_path} Received messages
 
               -if !current_user.professor?
                 -if received_mark
