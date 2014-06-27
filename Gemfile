@@ -30,7 +30,7 @@ group :test do
   gem 'guard-rspec', '~> 3.1.0'
   gem 'guard-spork', '~> 1.5.1'
   gem 'factory_girl_rails', '~> 4.4.1', require: false
-  gem 'shoulda-matchers', '~> 2.6.1', require: false
+  gem 'shoulda-matchers', '~> 2.6.1'
   gem 'database_cleaner', '~> 1.3.0'
   gem 'poltergeist', '~> 1.5.1'
   gem 'mock_redis', '~> 0.13.2'
