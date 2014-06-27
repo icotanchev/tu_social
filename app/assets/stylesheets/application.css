@@ -85,6 +85,10 @@ body {
 	border-radius: 6px;
 }
 
+.field-tu {
+  width: 70%;
+}
+
 .search-tu {
 	padding: 20px;
 	margin-bottom: 10px;
