@@ -4,32 +4,31 @@ describe SubjectsController do
   describe "routing" do
 
     it "routes to #index" do
-      get("/subjects").should route_to("subjects#index")
+      expect(get: '/subjects').to route_to(controller: 'subjects', action: 'index')
     end
 
     it "routes to #new" do
-      get("/subjects/new").should route_to("subjects#new")
+      expect(get: '/subjects/new').to route_to(controller: 'subjects', action: 'new')
     end
 
     it "routes to #show" do
-      get("/subjects/1").should route_to("subjects#show", :id => "1")
+      expect(get: '/subjects/1').to route_to(controller: 'subjects', action: 'show', id: '1')
     end
 
     it "routes to #edit" do
-      get("/subjects/1/edit").should route_to("subjects#edit", :id => "1")
+      expect(get: '/subjects/1/edit').to route_to(controller: 'subjects', action: 'edit', id: '1')
     end
 
     it "routes to #create" do
-      post("/subjects").should route_to("subjects#create")
+      expect(post: '/subjects').to route_to(controller: 'subjects', action: 'create')
     end
 
     it "routes to #update" do
-      put("/subjects/1").should route_to("subjects#update", :id => "1")
+      expect(put: '/subjects/1').to route_to(controller: 'subjects', action: 'update', id: '1')
     end
 
     it "routes to #destroy" do
-      delete("/subjects/1").should route_to("subjects#destroy", :id => "1")
+      expect(delete: '/subjects/1').to route_to(controller: 'subjects', action: 'destroy', id: '1')
     end
-
   end
 end
