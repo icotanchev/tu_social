@@ -8,6 +8,7 @@ TuSocial::Application.routes.draw do
       get 'send/new', action: :new
       get 'sent'
       get 'received'
+      get 'mark_all_as_readed'
     end
   end
 

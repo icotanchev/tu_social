@@ -2,10 +2,10 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
-# gem 'bootstrap-sass', '~> 2.3.2.0'
-gem 'therubyracer'
-gem 'less-rails'
-gem 'twitter-bootstrap-rails'
+
+gem 'therubyracer', '~> 0.12.1'
+gem 'less-rails', '~> 2.5.0'
+gem 'twitter-bootstrap-rails', '~> 2.2.8'
 
 gem 'kaminari', '~> 0.16.1'
 gem 'haml', '~> 4.0.3'
@@ -25,8 +25,17 @@ group :development, :test do
 end
 
 group :test do
-  gem 'selenium-webdriver', '~> 2.35.1'
-  gem 'capybara', '~> 2.1.0'
+  # gem 'selenium-webdriver', '~> 2.35.1'
+  gem 'capybara', '~> 2.3.0'
+  gem 'guard-rspec', '~> 3.1.0'
+  gem 'guard-spork', '~> 1.5.1'
+  gem 'factory_girl_rails', '~> 4.4.1', require: false
+  gem 'shoulda-matchers', '~> 2.6.1', require: false
+  gem 'database_cleaner', '~> 1.3.0'
+  gem 'poltergeist', '~> 1.5.1'
+  gem 'mock_redis', '~> 0.13.2'
+  gem 'resque_spec', '~> 0.15.0'
+  gem 'webmock', '~> 1.16.1'
 end
 
 gem 'devise', '~> 3.0.0'

@@ -65,12 +65,30 @@
       %tbody
         - @subjects.each do |subject|
           %tr
-            %td= subject.title
-            %td= subject.exam_info
-            %td= subject.subject_info
-            %td= subject.requirements
+            %td
+              = subject.title[0..15]
+              -if subject.title.length > 15 
+                = link_to '...', subject
+            %td
+              -if subject.exam_info and subject.exam_info.length > 15 
+                = subject.exam_info[0..15]
+                = link_to '...', subject
+              -else
+                = subject.exam_info
+            %td
+              -if subject.subject_info and subject.subject_info.length > 15 
+                = subject.subject_info[0..15]
+                = link_to '...', subject
+              -else
+                = subject.subject_info
+            %td
+              -if subject.requirements and subject.requirements.length > 15 
+                = subject.requirements[0..15]
+                = link_to '...', subject
+              -else
+                = subject.requirements
             %td= subject_owner(subject.user_id)
-            %td= subject.created_at
+            %td= subject.created_at.to_s[0..10]
             %td= link_to 'View', subject
             -if current_user.professor?
               %td= link_to 'Edit', edit_subject_path(subject)

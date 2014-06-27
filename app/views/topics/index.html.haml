@@ -27,10 +27,11 @@
   .span2
     = paginate @topics
   .span3  
-  .span4
+  .span3
     %h2 Topics
   .span2.link-position
     = link_to 'New Topic', new_topic_path
+
 .row
   .span12
     %table.table.table-striped
@@ -47,8 +48,16 @@
         %tbody
           - @topics.each do |topic|
             %tr
-              %td= topic.title
-              %td= topic.content
+              %td
+                = topic.title[0..15]
+                -if topic.title.length > 15 
+                  = link_to '...', topic
+              %td
+                -if topic.content and topic.content.length > 15 
+                  = topic.content[0..15]
+                  = link_to '...', topic
+                -else
+                  = topic.content
               %td= topic_owner(topic.user_id)
-              %td= topic.created_at
+              %td= topic.created_at.to_s[0..10]
               %td= link_to 'View', topic

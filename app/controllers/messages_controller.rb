@@ -2,19 +2,27 @@ class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :destroy]
 
   def index
-  end
-
-  def sent
     @messages = Message.where(sender: current_user.id).page(params[:page])
-    render :index
   end
 
   def received
     @messages = Message.where(recipient: current_user.id).page(params[:page])
+    
     render :index
   end
 
+  def mark_all_as_readed
+    Message.where(recipient: current_user.id).each do |msg|
+      msg.msg_read = true
+      msg.save!
+    end
+
+    redirect_to received_messages_url
+  end
+
   def show
+    @message.msg_read = true
+    @message.save!
   end
 
   def new

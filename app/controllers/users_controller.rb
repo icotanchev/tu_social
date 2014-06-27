@@ -2,12 +2,12 @@ class UsersController < ApplicationController
 
 	def index
 		@search = User.where(role: 'student').search(params[:q])
-    @users = @search.result.page(params[:page])
+    @users = @search.result.order('first_name  ASC').page(params[:page])
 	end
 
 	def teachers
 		@search = User.where(role: 'professor').search(params[:q])
-		@users = @search.result.page(params[:page])
+		@users = @search.result.order('first_name  ASC').page(params[:page])
 		render :index
 	end
 

@@ -55,6 +55,21 @@ body {
   left: 200px;
 }
 
+.right-msg {
+  position: relative;
+  left: 260px;
+}
+
+.right-mark {
+  position: relative;
+  left: 270px;
+}
+
+.right-account {
+  position: relative;
+  left: 260px;
+}
+
 .text_box_tu {
   width: 70%;
 }
