@@ -80,6 +80,8 @@ Spork.prefork do
     config.after(:each, type: :feature, js: true) do
       WebMock.disable_net_connect!
     end
+
+    config.include Capybara::DSL
   end
 end
 

@@ -1,11 +1,13 @@
 require 'spec_helper'
 
-describe "Marks" do
-  describe "GET /marks" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get marks_path
-      response.status.should be(200)
-    end
-  end
+describe 'Marks' do
+	# include AuthenticationHelper
+
+ #  it 'visit marks' do
+ #    visit_protected root_path
+
+ #    find("#student_marks").click
+
+ #    expect(page).to have_text 'Your marks are not configured'
+ #  end
 end

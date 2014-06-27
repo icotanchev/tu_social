@@ -36,6 +36,7 @@ group :test do
   gem 'mock_redis', '~> 0.13.2'
   gem 'resque_spec', '~> 0.15.0'
   gem 'webmock', '~> 1.16.1'
+  gem 'launchy', '~> 2.4.2'
 end
 
 gem 'devise', '~> 3.0.0'

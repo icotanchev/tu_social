@@ -16,7 +16,7 @@
             %a{href: teachers_users_path} Teachers
           %li
             %a{href: subjects_path} Subjects
-          %li.right-msg
+          %li
             %btn-toolbar.btn-grou
               %a.btn.btn-inverse{href: received_messages_path}
                 %span
@@ -28,8 +28,8 @@
                     %i.icon-envelope
           -if !current_user.professor?
             %li
-              %btn-toolbar.btn-grou.right-mark
-                %a.btn.btn-inverse{href: marks_path}
+              %btn-toolbar.btn-grou
+                %a.btn.btn-inverse#student_marks{href: marks_path}
                   %span
                     -if received_mark
                       .badge.badge-important
@@ -37,7 +37,7 @@
                         %i.icon-list-alt
                     - else
                       %i.icon-list-alt
-          %li.dropdown.right-account
+          %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
               Account
               %b.caret

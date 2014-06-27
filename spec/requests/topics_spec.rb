@@ -1,11 +1,17 @@
 require 'spec_helper'
 
-describe "Topics" do
-  describe "GET /topics" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get topics_path
-      response.status.should be(200)
-    end
+describe 'Topics' do
+  include AuthenticationHelper
+
+  it 'visit marks' do
+    visit_protected root_path
+
+    expect(page).to have_link 'TU Social'
+    expect(page).to have_link 'Home'
+    expect(page).to have_link 'Students'
+    expect(page).to have_link 'Subjects'
+    expect(page).to have_link 'Teachers'
+
+    # expect(page).to have_text 'Your marks are not configured'
   end
 end

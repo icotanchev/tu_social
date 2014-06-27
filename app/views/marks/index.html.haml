@@ -6,25 +6,26 @@
     - else
       %h2 
         = "Marks of #{current_user.first_name} #{current_user.last_name}"
-  .span2.link-position
-    = link_to 'Check marks', new_mark_marks_path
-  %table.table.table-striped
-    %thead
-      %tr
-        %th Number
-        %th Subjects
-        %th Form of exam
-        %th Marks
-    %tbody
-      - @marks.each do |key, value|
-        - next if key == 1
-        
-        -if value.length == 1
-          %tr.info
-            %td{colspan: 4}
-              %strong= value.first
-
-        -if value.length == 4
+    .span2.link-position
+      = link_to 'Check marks', new_mark_marks_path
+    - if @marks.present?
+      %table.table.table-striped
+        %thead
           %tr
-            -value.each do |t|
-              %td= t
+            %th Number
+            %th Subjects
+            %th Form of exam
+            %th Marks
+        %tbody
+          - @marks.each do |key, value|
+            - next if key == 1
+            
+            -if value.length == 1
+              %tr.info
+                %td{colspan: 4}
+                  %strong= value.first
+
+            -if value.length == 4
+              %tr
+                -value.each do |t|
+                  %td= t
