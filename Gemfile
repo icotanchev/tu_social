@@ -34,7 +34,7 @@ group :test do
   gem 'database_cleaner', '~> 1.3.0'
   gem 'poltergeist', '~> 1.5.1'
   gem 'mock_redis', '~> 0.13.2'
-  gem 'resque_spec', '~> 0.15.0'
+  # gem 'resque_spec', '~> 0.15.0'
   gem 'webmock', '~> 1.16.1'
   gem 'launchy', '~> 2.4.2'
 end
