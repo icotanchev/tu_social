@@ -1,29 +1,15 @@
-%h2 Edit User
-
-= form_for @user do |f|
-	%div
-		= f.label :email
-		%br/
-		= f.text_field :email
-	%div
-		= f.label :first_name
-		%br/
-		= f.text_field :first_name
-	%div
-		= f.label :last_name
-		%br/
-		= f.text_field :last_name
-	%div
-		= f.label :pin
-		%br/
-		= f.text_field :pin
-	%div
-		= f.label :faculty_number
-		%br/
-		= f.text_field :faculty_number
-	%div
-		= f.label :send_emails
-		%br/
-		= f.check_box :send_emails
-		%br/
-	= f.submit
+%div.form-signin
+	%h2
+		="Edit #{current_user.full_name}"
+	= form_for @user do |f|
+		= f.text_field :email, class: 'input-block-level', placeholder: "Email address"
+		= f.text_field :first_name, class: 'input-block-level', placeholder: "First name"
+		= f.text_field :last_name, class: 'input-block-level', placeholder: "Last name"
+		= f.text_field :pin, class: 'input-block-level', placeholder: "PIN"
+		= f.text_field :faculty_number, class: 'input-block-level', placeholder: "Faculty number"
+		%div
+			= f.label :send_emails
+			= f.check_box :send_emails
+			%br
+			%br
+		= f.submit 'Update', class: 'btn btn-large.btn-primary' 

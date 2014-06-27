@@ -1,45 +1,38 @@
-.container
-  .panel.panel-default
-    .panel-heading
-      %span.glyphicon.glyphicon-filter
-      Search Subjects
-    .panel-body
-      %form#user_searching
-        = search_form_for @search, url: root_url, nethod: :get do |f|
-          #Search.row
-            .col-md-12
-              .col-md-2
-                #field
-                  = f.label :email_cont, 'Email'
-                  = f.text_field :email_cont
-              .col-md-2
-                #field
-                  = f.label :first_name_cont, 'First Name'
-                  = f.text_field :first_name_cont
-              .col-md-2
-                #field
-                  = f.label :last_name_cont, 'Last Name'
-                  = f.text_field :last_name_cont
-          .row
-            .col-md-4
-            .col-md-5
-              #action
-                = f.submit 'Search'
-
-%h1 Users
-= paginate @users
-%table
-  %thead
-    %tr
-      %th Name
-      %th email
-      %th 
-      %th
-      %th
-  %tbody
-    - @users.each do |user|
-      - next if user.id == current_user.id
-      %tr
-        %td= user.full_name
-        %td= user.email
-        %td= link_to 'Send Message', send_new_messages_path(user.id)
+.hero-unit-tu
+  = search_form_for @search, url: root_url, nethod: :get do |f|
+    .row
+      .span1
+      .span3
+        = f.text_field :email_cont, class: 'input-block-level', placeholder: 'Email'  
+      .span3
+        = f.text_field :first_name_cont, class: 'input-block-level', placeholder: 'First name'  
+      .span3
+        = f.text_field :last_name_cont, class: 'input-block-level', placeholder: 'Last name'  
+      .col-md-2
+        = f.submit 'Search', class: 'btn btn-large.btn-primary'
+.row
+  .span2
+    = paginate @users
+  .span3  
+  .span4
+    -if controller.action_name == 'teachers'
+      %h2 Teachers
+    -else
+      %h2 Students
+.row
+  .span12
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Name
+          %th email
+          %th 
+          %th
+          %th
+      %tbody
+        - @users.each do |user|
+          - next if user.id == current_user.id
+          %tr
+            %td= user.full_name
+            %td= user.email
+            %td= link_to 'Send Message', send_new_messages_path(user.id)

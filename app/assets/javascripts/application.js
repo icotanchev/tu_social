@@ -13,5 +13,43 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require bootstrap-datepicker
 //= require turbolinks
 //= require_tree .
+
+$(document).on("focus", "[data-behaviour~='datepicker']", function(e) {
+  return $(this).datepicker({
+    format: "dd-mm-yyyy",
+    weekStart: 1,
+    autoclose: true
+  });
+});
+
+jQuery(function($) {
+	listenCommentFullContent();
+	// showDatePicker();	
+});
+
+// function showDatePicker() {
+// 	var ids = ['from_date_id', 'to_date_id'];
+
+// 	jQuery(ids).each(function(index, value) {
+// 		jQuery("#" + value).bind("click", function () {
+// 			return jQuery(this).datepicker({
+// 		    format: "dd-mm-yyyy",
+// 		    weekStart: 1,
+// 		    autoclose: true
+// 		  });
+// 		});
+// 	});
+// }
+
+function listenCommentFullContent() {
+  jQuery('a.full_comment_content').bind('click', function() {
+    jQuery.ajax({
+      type: "POST",
+      url: '/comments/full_content',
+      data: { selected_id: jQuery(this).attr('value') }
+    });
+  });
+}

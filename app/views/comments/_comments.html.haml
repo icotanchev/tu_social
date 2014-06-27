@@ -1,4 +1,23 @@
-#comments
-- @comments.each do |comment|
-	.comment
-		= simple_format comment.content
+.row
+	.span12
+		#comments
+			%table.table-tu
+				%thead
+					%tr
+						%th Comment
+						%th User name
+						%th Created at
+				%tbody
+					- @comments.each do |comment|
+						.comment
+							%tr
+								%td
+									- if comment.content.length > 15
+										= comment.content[0..15]
+										%a.full_comment_content{href: '#', id: "full_comment_content_#{comment.id}", value: "#{comment.id}"} ...
+										%div.full_content
+											=render 'comments/full_content'
+									- else
+										comment.content
+								%td= simple_format comment.user.full_name
+								%td= simple_format comment.created_at.to_s[0..10]

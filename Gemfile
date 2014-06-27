@@ -15,6 +15,7 @@ gem 'cancan', '~> 1.6.10'
 gem 'resque', '~> 1.25.1'
 gem 'resque-scheduler', '~> 2.4.0'
 gem 'ransack', '~> 1.2.3'
+gem 'bootstrap-datepicker-rails', '~> 1.1.1.8'
 
 group :development, :test do
 

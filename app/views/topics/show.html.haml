@@ -1,15 +1,24 @@
-%p#notice= notice
-%p
-  %strong Title:
-  = @topic.title
-%p
-  %strong Content:
-  = @topic.content
-%p
-  %strong User:
-  = topic_owner(@topic.user_id)
-= link_to 'Back', topics_path
+.hero-unit-tu
+	%p#notice= notice
+	.row
+		.span12
+			%strong Title:
+			= @topic.title
+	.row
+		.span12
+			%strong Content:
+			= @topic.content
+	.row
+		.span12
+			%strong User:
+			= topic_owner(@topic.user_id)
+	= link_to 'Back', topics_path
 
-%h2 Comments
-= render 'comments/comments'
-= render 'comments/form'
+	.row
+		.span4
+		.span4
+			%h3 Comments
+	.row
+		.span12
+			= render 'comments/comments'
+			= render 'comments/form'

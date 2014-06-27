@@ -23,7 +23,7 @@ class SubjectsController < ApplicationController
   def create
     @subject = Subject.new(subject_params)
     
-    @subject.user = current_user
+    @subject.user_id = current_user.id
     if @subject.save and current_user.professor?
       redirect_to @subject, notice: 'Subject was successfully created.' 
     else
@@ -55,6 +55,6 @@ class SubjectsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def subject_params
-    params.require(:subject).permit(:title, :exam_info, :subject_info, :requirements, :teacher_id)
+    params.require(:subject).permit(:title, :exam_info, :subject_info, :requirements, :user_id)
   end
 end

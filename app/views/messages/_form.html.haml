@@ -6,13 +6,7 @@
         - @message.errors.full_messages.each do |msg|
           %li= msg
   
-  .field
-    = f.label :subject
-    = f.text_field :subject
-  .field
-    = f.label :content
-    = f.text_area :content, row: 8
-    %br
-    
+  = f.text_field :subject, class: 'input-block-level', placeholder: "Subject"
+  = f.text_area :content, row: 8, class: 'input-block-level', placeholder: "Content"
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: 'btn btn-large.btn-primary'

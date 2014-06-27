@@ -1,17 +1,24 @@
-%h1 Listing messages
-= paginate @messages
-%table
-  %tr
-    %th Recipient
-    %th Subject
-    %th Content
-    %th
-    %th
+.row
+  .span2
+    = paginate @messages
+  .span3
+  .span4
+    %h2
+      = "#{controller.action_name} messages"
+.row
+  .span12
+    %table.table.table-striped
+      %tr
+        %th Recipient
+        %th Subject
+        %th Content
+        %th
+        %th
 
-  - @messages.each do |message|
-    %tr
-      %td= User.find(message.recipient).full_name
-      %td= message.subject
-      %td= message.content
-      %td= link_to 'Show', message
-      %td= link_to 'Destroy', message, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      - @messages.each do |message|
+        %tr
+          %td= User.find(message.recipient).full_name
+          %td= message.subject
+          %td= message.content
+          %td= link_to 'Show', message
+          %td= link_to 'Destroy', message, :method => :delete, :data => { :confirm => 'Are you sure?' }

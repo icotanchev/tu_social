@@ -1,24 +1,32 @@
-%p#notice= notice
-%p
-  %strong Title:
-  = @subject.title
-%p
-  %strong Exam info:
-  = @subject.exam_info
-%p
-  %strong Subject info:
-  = @subject.subject_info
-%p
-  %strong Requirements:
-  = @subject.requirements
-%p
-  %strong Teacher:
-  = subject_owner(@subject.user_id)
--if current_user.professor?
-  = link_to 'Edit', edit_subject_path(@subject)
-
-%h2 Comments
-= render 'comments/comments'
-= render 'comments/form'
-
-= link_to 'Back', edit_subject_path(@subject)
+.hero-unit-tu
+  %p#notice= notice
+  .row
+    .span12
+      %strong Title:
+      = @subject.title
+  .row
+    .span12
+      %strong Exam info:
+      = @subject.exam_info
+  .row
+    .span12
+      %strong Subject info:
+      = @subject.subject_info
+  .row
+    .span12
+      %strong Requirements:
+      = @subject.requirements
+  .row
+    .span12
+      %strong Teacher:
+      = subject_owner(@subject.user_id)
+  -if current_user.professor?
+    = link_to 'Edit', edit_subject_path(@subject)
+  .row
+    .span4
+    .span4
+      %h3 Comments
+  .row
+    .span12
+      = render 'comments/comments'
+      = render 'comments/form'

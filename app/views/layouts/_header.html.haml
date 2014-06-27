@@ -1,37 +1,36 @@
-%header.navbar.navbar-fixed-top.navbar-inverse
+%div.navbar.navbar-inverse
   .navbar-inner
-    .container
-      = link_to 'TU Social', topics_path, id: 'logo'
-      %nav
-        %ul.nav.pull-right
+    %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", type: "button"}
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    %a.brand{href: topics_path} TU Social
+    .nav-collapse.collapse
+      %ul.nav
+        - if signed_in? 
           %li
-            = link_to 'Topics', topics_path
-          - if signed_in? 
-            %li
-              = link_to 'Students', users_path
-            %li
-              = link_to 'Teachers', teachers_users_path
-            %li
-              = link_to 'Subjects', subjects_path
-            %li#fat-menu.dropdown
-              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-                Account
-                %b.caret
-              %ul.dropdown-menu      
+            %a{href: topics_path} Home
+          %li
+            %a{href: users_path} Students
+          %li
+            %a{href: teachers_users_path} Teachers
+          %li
+            %a{href: subjects_path} Subjects
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+              Account
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                %a{href: edit_user_registration_path} Change password
+              %li
+                %a{href: edit_user_path(current_user.id)} Profile
+              %li
+                %a{href: sent_messages_path} Sent
+              %li
+                %a{href: received_messages_path} Received
+              -if !current_user.professor?
                 %li
-                  = link_to 'Change password', edit_user_registration_path
-                %li
-                  = link_to 'Profile', edit_user_path(current_user.id)
-                %li
-                  = link_to 'Sent', sent_messages_path
-                %li
-                  = link_to 'Received', received_messages_path
-                -if !current_user.professor?
-                  %li
-                    = link_to 'Marks', marks_path
-                %li.divider
-                %li
-                  = link_to 'Sign Out', destroy_user_session_path, :method => :delete 
-          - else
-            %li
-              = link_to 'Sign in'
+                  %a{href: marks_path} Marks
+              %li
+                = link_to 'Sign Out', destroy_user_session_path, :method => :delete

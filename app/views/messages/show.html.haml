@@ -1,21 +1,20 @@
-%p#notice= notice
+.hero-unit-tu
+  %p#notice= notice
+  .row
+    .span12
+      %strong Recipient:
+      = @message.recipient
+  .row
+    .span12
+      %strong Sender:
+      = @message.sender
+  .row
+    .span12
+      %strong Subject:
+      = @message.subject
+  .row
+    .span12
+      %strong Content:
+      = @message.content
 
-%p
-  %b Recipient:
-  = @message.recipient
-%p
-  %b Sender:
-  = @message.sender
-%p
-  %b Subject:
-  = @message.subject
-%p
-  %b Content:
-  = @message.content
-%p
-  %b Msg read:
-  = @message.msg_read
-
-= link_to 'Edit', edit_message_path(@message)
-\|
-= link_to 'Back', messages_path
+  = link_to 'Back', messages_path

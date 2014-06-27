@@ -24,5 +24,24 @@ module TuSocial
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    #Path to assets in vendor dir
+    config.assets.paths << Rails.root.join("vendor", "assets")
+
+    # Enable the asset pipeline
+    config.assets.enabled = true
+
+    # Version of your assets, change this if you want to expire all your assets
+    config.assets.version = '1.0'
+
+    # Configure generators to use third-party gems
+    config.generators do |g|
+      g.test_framework :rspec,
+        view_specs: false,
+        helper_specs: false
+    end
+
+    # Prevent connecting to the database while precompiling assets
+    config.assets.initialize_on_precompile = false
   end
 end

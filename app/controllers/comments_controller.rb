@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :load_commentable
+  before_filter :load_commentable, :except => [:full_content, :show]
 
   def index
   	@comments = @commentable.comments
@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
 
   def create
   	@comment = @commentable.comments.new(subject_params)
+    @comment.user = current_user
   	if @comment.save
   		redirect_to @commentable, notice: 'Comment was successfully created.' 
   	else
