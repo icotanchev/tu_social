@@ -15,7 +15,7 @@ class MarksController < ApplicationController
 
   def new_mark
     # Resque.enqueue(DownloadMarksJob, current_user.id)
-    UissMarks::MarksConfigurator(current_user.id)
+    UissMarks::MarksConfigurator.new(current_user.id).configure_marks
 
     redirect_to root_url, notice: 'Mark has been scheduled for download !'
   end
