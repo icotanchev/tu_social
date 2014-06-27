@@ -3,11 +3,8 @@
   .row
     .span12
       %strong Recipient:
-      = @message.recipient
-  .row
-    .span12
-      %strong Sender:
-      = @message.sender
+      -binding.pry
+      = User.find(@message.recipient).full_name
   .row
     .span12
       %strong Subject:

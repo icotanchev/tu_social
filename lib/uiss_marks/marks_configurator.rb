@@ -6,6 +6,8 @@ module UissMarks
 		end
 
 		def configure_marks
+			return if user.pin.blank? or user.faculty_number.blank? or user.role == 'professor'
+			
 			fetched_marks = Fetcher.new(user.pin, user.faculty_number).fetch!
 
 			update_marks(fetched_marks) unless fetched_marks == user.mark.marks

@@ -14,9 +14,11 @@ class MarksController < ApplicationController
   end
 
   def new_mark
-    # Resque.enqueue(DownloadMarksJob, current_user.id)
-    UissMarks::MarksConfigurator.new(current_user.id).configure_marks
-
-    redirect_to root_url, notice: 'Mark has been scheduled for download !'
+    if current_user.pin and current_user.faculty_number
+      UissMarks::MarksConfigurator.new(current_user.id).configure_marks
+      redirect_to root_url, notice: 'Mark has been scheduled for download !'
+    else
+      redirect_to edit_user_path(current_user.id), notice: "Configure your 'PIN' and 'Faculty number' to download marks !"
+    end
   end
 end

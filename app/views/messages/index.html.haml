@@ -16,7 +16,11 @@
   .span12
     %table.table.table-striped
       %tr
-        %th Recipient
+        - if controller.action_name == 'index'
+          %th Recipient
+        -else
+          %th From
+
         %th Subject
         %th Content
         %th
@@ -24,7 +28,11 @@
 
       - @messages.each do |message|
         %tr{ class: (message.msg_read ? '' : 'info')}
-          %td= User.find(message.recipient).full_name
+          - if controller.action_name == 'index'
+            %td= User.find(message.recipient).full_name
+          -else
+            %td= User.find(message.sender).full_name
+          
           %td= message.subject
           %td= message.content
           %td= link_to 'Show', message

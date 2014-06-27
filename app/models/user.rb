@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :comment
   has_one :mark
 
-	before_save :check_email
+	before_create :check_email
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   end
 
   def check_email
+    binding.pry
   	if self.role == '1' && self.email.split('@').last == 'gmail.com'
   		self.role = 'professor'
   	else

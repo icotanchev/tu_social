@@ -20,6 +20,10 @@ body {
   background-color: #f5f5f5;
 }
 
+.notifi_li_color {
+  color: red;
+}
+
 .form-signin {
   max-width: 300px;
   padding: 19px 29px 29px;
@@ -43,10 +47,6 @@ body {
   height: auto;
   margin-bottom: 15px;
   padding: 7px 9px;
-}
-
-.navbar-inner {
-  margin: -2px;
 }
 
 .link-position{

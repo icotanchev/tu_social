@@ -1,4 +1,4 @@
-%div.navbar.navbar-inverse
+.navbar.navbar-inverse
   .navbar-inner
     %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", type: "button"}
       %span.icon-bar
@@ -16,30 +16,16 @@
             %a{href: teachers_users_path} Teachers
           %li
             %a{href: subjects_path} Subjects
-          %li
-            %btn-toolbar.btn-grou
-              %a.btn.btn-inverse{href: received_messages_path}
-                %span
-                  - if unreaded_msg != 0
-                    .badge.badge-important
-                      = unreaded_msg
-                      %i.icon-envelope
-                  - else
-                    %i.icon-envelope
-          -if !current_user.professor?
-            %li
-              %btn-toolbar.btn-grou
-                %a.btn.btn-inverse#student_marks{href: marks_path}
-                  %span
-                    -if received_mark
-                      .badge.badge-important
-                        = '1'
-                        %i.icon-list-alt
-                    - else
-                      %i.icon-list-alt
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-              Account
+
+              - if unreaded_msg != 0 || (!current_user.professor? && received_mark)
+                %span.badge.badge-important
+                  Account
+              -else
+                %span
+                  Account
+
               %b.caret
             %ul.dropdown-menu
               %li
@@ -48,5 +34,22 @@
                 %a{href: edit_user_path(current_user.id)} Profile
               %li
                 %a{href: messages_path} Sent messages
+              
+              -if unreaded_msg != 0
+                %li.label.label-important
+                  %a{href: messages_path} Received messages
+                  = unreaded_msg
+              - else
+                %li
+                  %a{href: messages_path} Received messages
+
+              -if !current_user.professor?
+                -if received_mark
+                  %li.label.label-important
+                    %a{href: marks_path} Marks
+                - else
+                  %li
+                    %a{href: marks_path} Marks
+
               %li
                 = link_to 'Sign Out', destroy_user_session_path, :method => :delete
