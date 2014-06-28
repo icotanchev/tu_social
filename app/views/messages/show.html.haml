@@ -2,7 +2,6 @@
   .row
     .span12
       %strong Recipient:
-      -binding.pry
       = User.find(@message.recipient).full_name
   .row
     .span12

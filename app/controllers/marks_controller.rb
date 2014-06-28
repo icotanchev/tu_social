@@ -8,6 +8,9 @@ class MarksController < ApplicationController
     end
   	if mark.nil?
   		@marks = Mark.create!(user_id: current_user.id)
+    elsif mark.marks == 'Error: can not download marks'
+      mark.marks = nil
+      mark.save!
   	else
     	@marks = mark.marks
     end

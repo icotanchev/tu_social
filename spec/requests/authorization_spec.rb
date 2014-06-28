@@ -13,11 +13,13 @@ describe 'Authorization' do
     expect(current_path).to eq root_path
 
     click_link 'Subjects'
-    expect(current_path).to eq subjects_path    
     
-    visit new_subject_path
+    expect(current_path).to eq subjects_path
+    expect(page).to have_link 'New Subjec'
+    
+    click_link 'New Subjec'
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq new_subject_path
   end
 
   it 'Standart user abilities' do

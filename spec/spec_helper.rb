@@ -7,7 +7,7 @@ Spork.prefork do
   require 'rspec/rails'
   require 'database_cleaner'
   require 'capybara/rspec'
-  require 'webmock/rspec'
+  # require 'webmock/rspec'
   require 'capybara/poltergeist'
   require 'factory_girl_rails'
   require 'rspec/autorun'
@@ -69,17 +69,17 @@ Spork.prefork do
     Capybara.javascript_driver = :poltergeist
 
     # Redis
-    Resque.redis = MockRedis.new
-    Resque.inline = true
+    # Resque.redis = MockRedis.new
+    # Resque.inline = true
 
     # WebMock
-    config.before(:each, type: :feature, js: true) do
-      WebMock.disable_net_connect!(allow_localhost: true)
-    end
+    # config.before(:each, type: :feature, js: true) do
+    #   WebMock.disable_net_connect!(allow_localhost: true)
+    # end
 
-    config.after(:each, type: :feature, js: true) do
-      WebMock.disable_net_connect!
-    end
+    # config.after(:each, type: :feature, js: true) do
+    #   WebMock.disable_net_connect!
+    # end
 
     config.include Capybara::DSL
   end

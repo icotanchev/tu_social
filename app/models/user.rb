@@ -32,7 +32,6 @@ class User < ActiveRecord::Base
   end
 
   def check_email
-    binding.pry
   	if self.role == '1' && self.email.split('@').last == 'gmail.com'
   		self.role = 'professor'
   	else

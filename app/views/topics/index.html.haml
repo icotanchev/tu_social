@@ -1,5 +1,5 @@
 .hero-unit-tu
-  = search_form_for @search, url: root_url, nethod: :get do |f|
+  = search_form_for @search, method: :get do |f|
     .row
       .span1
       .span3
@@ -12,12 +12,12 @@
       .span1
       .span3
         .input-group.input-group-sm.input-append.date.datepicker
-          = f.text_field :created_at_gteq, 'data-behaviour' => 'datepicker', class: 'input-block-level', placeholder: 'Date From', value: params[:q] ? "#{params[:q][:created_at_gteq]} 23:59:59": ''
+          = f.text_field :created_at_gteq, 'data-behaviour' => 'datepicker', class: 'input-block-level', placeholder: 'Date From', value: datepicker_proper_time(params)
           %span.add-on#from_date_id
             %i.icon-th
       .span3
         .input-group.input-group-sm.input-append.date.datepicker
-          = f.text_field :created_at_lteq, 'data-behaviour' => 'datepicker', class: 'input-block-level', placeholder: 'Date To', value: params[:q] ? "#{params[:q][:created_at_lteq]} 23:59:59": ''
+          = f.text_field :created_at_lteq, 'data-behaviour' => 'datepicker', class: 'input-block-level', placeholder: 'Date To', value: datepicker_proper_time(params)
           %span.add-on#to_date_id
             %i.icon-th
       .span1
@@ -60,4 +60,4 @@
                   = topic.content
               %td= topic_owner(topic.user_id)
               %td= topic.created_at.to_s[0..10]
-              %td= link_to 'View', topic
+              %td= link_to 'View', topic, id: "view_topic_#{topic.id}"

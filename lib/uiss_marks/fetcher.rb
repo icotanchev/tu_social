@@ -19,6 +19,8 @@ module UissMarks
 			    form.field_with(id: 'fn').value = @faculty_number
 			    login_page = a.submit(form, form.button_with(id: 'login'))
 			    
+			    return 'Error: can not download marks' if login_page.uri.to_s != "http://student.tu-sofia.bg/info.php"
+
 			    marks = a.click(login_page.link_with(:text => /Оценки/))
 
 			    content =  Nokogiri::HTML(marks.body)

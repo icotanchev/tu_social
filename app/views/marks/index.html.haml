@@ -3,12 +3,12 @@
     - if @marks.blank?
       %h2 
         = "Your marks are not configured"
-    - else
+    -else
       %h2 
         = "Marks of #{current_user.first_name} #{current_user.last_name}"
     .span2.link-position
       = link_to 'Check marks', new_mark_marks_path
-    - if @marks.present?
+    - if @marks.present? and @marks != 'Error: can not download marks'
       %table.table.table-striped
         %thead
           %tr

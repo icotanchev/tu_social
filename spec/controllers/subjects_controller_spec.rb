@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SubjectsController do
-include AuthenticationHelper
+  include AuthenticationHelper
   
   describe 'GET #index' do
 

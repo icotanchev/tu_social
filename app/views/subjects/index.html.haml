@@ -1,5 +1,5 @@
 .hero-unit-tu
-  = search_form_for @search, url: root_url, nethod: :get do |f|
+  = search_form_for @search, method: :get do |f|
     .row
       .span1
       .span3
@@ -21,13 +21,13 @@
       .span1
       .span3
         .input-group.input-group-sm.input-append.date.datepicker
-          = f.text_field :created_at_gteq, 'data-behaviour' => 'datepicker', class: 'input-block-level', placeholder: 'Date From', value: params[:q] ? "#{params[:q][:created_at_gteq]} 23:59:59": ''
+          = f.text_field :created_at_gteq, 'data-behaviour' => 'datepicker', class: 'input-block-level', placeholder: 'Date From', value: datepicker_proper_time(params)
           %span.add-on#from_date_id
             %i.icon-th
       .span1
       .span3
         .input-group.input-group-sm.input-append.date.datepicker
-          = f.text_field :created_at_lteq, 'data-behaviour' => 'datepicker', class: 'input-block-level', placeholder: 'Date To', value: params[:q] ? "#{params[:q][:created_at_lteq]} 23:59:59": ''
+          = f.text_field :created_at_lteq, 'data-behaviour' => 'datepicker', class: 'input-block-level', placeholder: 'Date To', value: datepicker_proper_time(params)
           %span.add-on#to_date_id
             %i.icon-th
       .span3
@@ -89,7 +89,7 @@
                 = subject.requirements
             %td= subject_owner(subject.user_id)
             %td= subject.created_at.to_s[0..10]
-            %td= link_to 'View', subject
+            %td= link_to 'View', subject, id: "view_subject_#{subject.id}"
             -if current_user.professor?
-              %td= link_to 'Edit', edit_subject_path(subject)
-              %td= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }
+              %td= link_to 'Edit', edit_subject_path(subject), id: "edit_subject_#{subject.id}"
+              %td= link_to 'Destroy', subject, method: :delete, id: "delete_subject_#{subject.id}", data: { confirm: 'Are you sure?' }

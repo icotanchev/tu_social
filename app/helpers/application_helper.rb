@@ -11,4 +11,14 @@ module ApplicationHelper
 	def received_mark
 		current_user.new_mark
 	end
+
+	def datepicker_proper_time(params)
+		if params[:q] and params[:q][:created_at_gteq]
+			"#{params[:q][:created_at_gteq]} 23:59:59"
+		elsif params[:q] and params[:q][:created_at_lteq]
+			"#{params[:q][:created_at_lteq]} 00:00:00"
+		else
+			''
+		end
+	end
 end

@@ -35,5 +35,5 @@
           
           %td= message.subject
           %td= message.content
-          %td= link_to 'Show', message
-          %td= link_to 'Destroy', message, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %td= link_to 'Show', message, id: "view_message_#{message.id}"
+          %td= link_to 'Destroy', message, :method => :delete, :data => { :confirm => 'Are you sure?' }, id: "delete_message_#{message.id}"

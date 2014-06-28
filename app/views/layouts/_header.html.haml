@@ -16,9 +16,8 @@
             %a{href: teachers_users_path} Teachers
           %li
             %a{href: subjects_path} Subjects
-          %li.dropdown
+          %li.dropdown#account_drop_down_id
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-
               - if unreaded_msg != 0 || (!current_user.professor? && received_mark)
                 %span.badge.badge-important
                   Account
