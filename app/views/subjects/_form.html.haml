@@ -12,4 +12,7 @@
   = f.text_area :subject_info, class: 'input-block-level', placeholder: "Subject information"
   = f.text_area :requirements, class: 'input-block-level', placeholder: "Requirements"
   .actions
-    = f.submit 'Update', class: 'btn btn-large.btn-primary' 
+    -if controller.action_name == 'new'
+      = f.submit 'Create', class: 'btn btn-large.btn-primary' 
+    -else
+      = f.submit 'Update', class: 'btn btn-large.btn-primary' 
