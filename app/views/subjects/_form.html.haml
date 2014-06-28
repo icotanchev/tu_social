@@ -1,12 +1,12 @@
 = form_for(@subject) do |f|
   - if @subject.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@subject.errors.count, "error")
-        prohibited this subject from being saved:
+    .label-important
+      = pluralize(@subject.errors.count, "error")
+      prohibited this subject from being saved:
       %ul
         - @subject.errors.full_messages.each do |msg|
-          %li= msg
+          %li.label-important= msg
+          
   = f.text_field :title, class: 'input-block-level', placeholder: "Title"
   = f.text_area :exam_info, class: 'input-block-level', placeholder: "Exam information"
   = f.text_area :subject_info, class: 'input-block-level', placeholder: "Subject information"

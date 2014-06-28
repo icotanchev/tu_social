@@ -1,5 +1,5 @@
 .hero-unit-tu
-  = search_form_for @search, url: root_url, nethod: :get do |f|
+  = search_form_for @search, url: controller.action_name == 'index' ? users_path : teachers_users_path, nethod: :get do |f|
     .row
       .span1
       .span3

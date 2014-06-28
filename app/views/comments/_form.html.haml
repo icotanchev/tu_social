@@ -1,15 +1,12 @@
-.row
-	.span12
-		= form_for [@commentable, @comment] do |f|
-			-if @comment.errors.any?
-				.error_messages
-					%h2 Please correct the following errors!
-					%ul
-					- @comment.errors.full_messages.each do |msg|
-						%li
-							= msg
+= form_for [@commentable, @comment] do |f|
+	-if @comment.errors.any?
+		.label.label-important
+			Please correct the following errors!
+		%ul
+		- @comment.errors.full_messages.each do |msg|
+			%li.label.label-important= msg
 
-			.text_box_tu
-				= f.text_area :content, rows: 8, class: 'input-block-level', placeholder: "Comment"
-			.actions
-				= f.submit 'Create comment', class: 'btn btn-large.btn-primary' 
+	.text_box_tu
+		= f.text_area :content, rows: 8, class: 'input-block-level', placeholder: "Comment"
+	.actions
+		= f.submit 'Create comment', class: 'btn btn-large.btn-primary' 
