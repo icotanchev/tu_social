@@ -37,7 +37,7 @@ class MessagesController < ApplicationController
     @message.msg_read = false
     if @message.save
       recipient = User.find(params[:recipient])
-      redirect_to @message, notice: 'Message was successfully send!'
+      redirect_to messages_url, notice: 'Message was successfully send!'
       send_email(recipient) if recipient.send_emails
     else
       render action: 'new'
