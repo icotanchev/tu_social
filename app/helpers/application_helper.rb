@@ -5,7 +5,7 @@ module ApplicationHelper
 	end
 
 	def unreaded_msg
-		Message.where(recipient: current_user.id, msg_read: 0).count
+		Message.where(recipient: current_user.id, msg_read: nil).count
 	end
 
 	def received_mark

@@ -33,8 +33,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     
     @message.sender = current_user.id 
-    @message.recipient = params[:recipient] 
-    @message.msg_read = false
+    @message.recipient = params[:recipient]
     if @message.save
       recipient = User.find(params[:recipient])
       redirect_to messages_url, notice: 'Message was successfully send!'
