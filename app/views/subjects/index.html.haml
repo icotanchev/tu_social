@@ -15,7 +15,7 @@
         = f.text_field :requirements_cont, class: 'input-block-level', placeholder: 'Requirements'  
       .span1
       .span3
-        = f.select :user_id_eq, select_users_for(params[:q] ? params[:q][:user_id_eq] : '').html_safe, multiple: true, class: 'form-control', include_blank: 'Select user'
+        = f.select :user_id_eq, select_teachers_for(params[:q] ? params[:q][:user_id_eq] : '').html_safe, multiple: true, class: 'form-control', include_blank: 'Select user'
       .span1
     .row
       .span1

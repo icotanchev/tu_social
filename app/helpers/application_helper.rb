@@ -4,6 +4,11 @@ module ApplicationHelper
 		options_for_select(users, selected: selected)
 	end
 
+	def select_teachers_for(selected)
+		users = User.where(role: 'professor').map { |user| [user.full_name, user.id] }.sort
+		options_for_select(users, selected: selected)
+	end
+
 	def unreaded_msg
 		Message.where(recipient: current_user.id, msg_read: nil).count
 	end
