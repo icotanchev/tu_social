@@ -27,7 +27,7 @@ class SubjectsController < ApplicationController
     if @subject.save and current_user.professor?
       redirect_to @subject, notice: 'Subject was successfully created.' 
     else
-      render action: 'new', warning: 'Subject was not created!' 
+      render action: 'new', notice: 'Subject was not created!' 
     end
   end
 

@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'User was successfully updated.'
       redirect_to edit_user_url(@user.id)
     else
-    	flash[:warning] = 'User was not updated!'
+    	flash[:notice] = 'User was not updated!'
       redirect_to action: :edit
     end
 	end

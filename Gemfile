@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.5'
 
 gem 'therubyracer', '~> 0.12.1'
 gem 'less-rails', '~> 2.5.0'
@@ -18,10 +18,10 @@ gem 'ransack', '~> 1.2.3'
 gem 'bootstrap-datepicker-rails', '~> 1.1.1.8'
 
 group :development, :test do
-
   gem 'mysql2', '~> 0.3.13'
   gem 'rspec-rails', '~> 2.13.1'
   gem 'quiet_assets', '~> 1.0.2'
+  gem 'brakeman', :require => false
 end
 
 group :test do

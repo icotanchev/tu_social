@@ -24,6 +24,11 @@ body {
   color: red;
 }
 
+.form-errors {
+  max-width: 300px;
+  margin: 0 auto 20px;
+}
+
 .form-signin {
   max-width: 300px;
   padding: 19px 29px 29px;

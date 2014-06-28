@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   	if @comment.save
   		redirect_to @commentable, notice: 'Comment was successfully created.' 
   	else
-  		render :new, warning: 'Comment was not created!' 
+  		render :new, notice: 'Comment was not created!' 
   	end
   end
 

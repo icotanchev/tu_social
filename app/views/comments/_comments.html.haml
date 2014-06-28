@@ -12,7 +12,7 @@
 						.comment
 							%tr
 								%td
-									= simple_format comment.user.full_name
-									= simple_format comment.created_at.to_s[0..10]
+									= comment.user.full_name
+									= comment.created_at.to_s[0..10]
 								%td
-									= simple_format comment.content
+									= comment.content
